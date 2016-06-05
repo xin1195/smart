@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # _*_coding:utf-8_*_
 import os
-import motor.motor_asyncio
+import motor.motor_tornado
 
 # 设置文件配置
 settings = dict(
@@ -15,5 +15,16 @@ settings = dict(
 )
 
 # 设置mongodb的连接
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://112.74.204.250:27017')
+client = motor.motor_tornado.MotorClient('mongodb://112.74.204.250:27017')
+dict_app_country = {
+    # 中国
+    "zh_hant_hk": "CN", "zh_hans_sg": "CN", "zh_hans_hk": "CN", "zh_hans": "CN", "zh": "CN", "zh_hans_cn": "CN", "zh_hant": "CN",
+    "zh_hant_tw": "CN", "zh_hant_mo": "CN", "zh_hans_mo": "CN",
+    # 美国
+    "us": "US",
+    "en": "US",
+    # 阿拉伯
+    'ar_ye': "SA", 'ar_eg': "SA", 'ar_sa': "SA", 'ar_sd': "SA", 'ar_ly': "SA", 'ar_om': "SA", 'ar_ma': "SA", 'ar_tn': "SA", 'ar_jo': "SA",
+    'ar_kw': "SA", 'ar_qa': "SA", 'ar_lb': "SA", 'ar_iq': "SA", 'ar_bh': "SA", 'ar': "SA", 'ar_ae': "SA", 'ar_dz': "SA", 'ar_sy': "SA",
+}
 
