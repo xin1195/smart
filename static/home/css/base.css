@@ -1,0 +1,21 @@
+.navbar{
+    min-height: 0;
+    margin-bottom: 20px;
+}
+
+.navbar-default{
+    background-color: #b5d790;
+}
+
+.navbar-nav > li > a{
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.navbar-brand{
+    float: left;
+    font-size: 18px;
+    height: 30px;
+    line-height: 20px;
+    padding: 5px;
+}

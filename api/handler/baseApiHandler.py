@@ -3,12 +3,12 @@
 # Created by "LiuXin"
 # Time 2016/6/2
 import time
-from tornado_json.requesthandlers import APIHandler
+import tornado.web
 
 from setting import client, dict_app_country
 
 
-class BaseApiHandler(APIHandler):
+class BaseApiHandler(tornado.web.RequestHandler):
     def data_received(self, chunk):
         pass
 

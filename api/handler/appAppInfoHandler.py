@@ -8,7 +8,10 @@ from tornado import gen
 from api.handler.baseApiHandler import BaseApiHandler
 
 
-class ApiAppGenreHandler(BaseApiHandler):
+class ApiAppInfoHandler(BaseApiHandler):
+    def __init__(self, application, request, **kwargs):
+        super().__init__(application, request, **kwargs)
+
     @gen.coroutine
     def get(self):
         data_list = []
@@ -43,4 +46,3 @@ class ApiAppGenreHandler(BaseApiHandler):
         }
         self.write(data)
         self.finish()
-
