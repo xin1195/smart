@@ -3,7 +3,8 @@
 import os
 import motor.motor_tornado
 
-# 设置文件配置
+from comon.handler.LogManage import get_logger
+
 settings = dict(
     template_path=os.path.join(os.path.dirname(__file__), "templates"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
@@ -28,3 +29,7 @@ dict_app_country = {
     'ar_kw': "SA", 'ar_qa': "SA", 'ar_lb': "SA", 'ar_iq': "SA", 'ar_bh': "SA", 'ar': "SA", 'ar_ae': "SA", 'ar_dz': "SA", 'ar_sy': "SA",
 }
 
+logger = get_logger(strFileName="smartSearch.log",
+                    debug=30,
+                    showStreamLog=True,
+                    saveLogPath=None)

@@ -1,9 +1,5 @@
-# -*- coding:utf-8 -*-
-'''
-Created on 2014-9-4
-
-@author: yuzhongfu
-'''
+#!/usr/bin/env python3
+# _*_coding:utf-8_*_
 
 import os
 import sys
@@ -140,8 +136,8 @@ def _testLog():
 
     objLogger = LogManage("nameas.log")
     logger = objLogger.getLogger()
-    for item in xrange(1):
-        logger.error("%5d" % item * 50)
+    # for item in xrange(1):
+    #     logger.error("%5d" % item * 50)
 
 
 if __name__ == "__main__":
