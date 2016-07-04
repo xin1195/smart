@@ -21,7 +21,10 @@ class AdminLoginHandler(BaseHandler):
             if user:
                 self.set_secure_cookie("user", username)
                 self.redirect("/admin")
-        self.redirect("/admin/login")
+            else:
+                self.redirect("/spider/login")
+        else:
+            self.redirect("/admin/login")
 
 
 class AdminLogoutHandler(BaseHandler):
