@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import tornado
+import tornado.web
 
 from admin.handler.baseHandler import BaseHandler
 

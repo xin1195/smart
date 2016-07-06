@@ -1,0 +1,39 @@
+{% extends "layout/base1.html" %}
+
+{% block title%}首页{% end %}
+
+{% block head-css %}
+<link href="{{ static_url('home/css/index.css') }}" rel="stylesheet">
+{% end %}
+
+{% block content %}
+    <h1>index</h1>
+        <div id="msgBox" style="width:400px;height:300px;border:1px solid #000000"></div>
+        <div>
+            hello
+            <input id="chat">
+            <button  onclick="send_message()">send</button>
+        </div>
+{% end %}
+
+{% block bottom-js %}
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://localhost:8000/userSocket");
+        ws.onopen = function() {
+           ws.send("Hello, world");
+        };
+        ws.onmessage = function (event) {
+            $('#msgBox').append(JSON.parse(event.data)["message"]);
+            $('#msgBox').append('</br>');
+        }
+        function send_message() {
+            //如果要向某个客户端发送消息：某个客户端的id`内容
+            ws.send($("#chat").val());
+            $("#chat").val("");
+        }
+        $('.form-control').change(function () {
+            alert($(this).select().val());
+            ws.send($(this).select().val());
+        });
+    </script>
+{% end %}

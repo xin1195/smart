@@ -30,6 +30,6 @@ dict_app_country = {
 }
 
 logger = get_logger(strFileName="smartSearch.log",
-                    debug=30,
+                    debug=20,
                     showStreamLog=True,
                     saveLogPath=None)
