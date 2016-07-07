@@ -5,6 +5,7 @@ import tornado.web
 from tornado import gen
 
 from home.handler.baseHandler import BaseHandler
+from setting import domain
 
 
 class HomeIndexHandler(BaseHandler):
@@ -30,7 +31,7 @@ class HomeIndex4Handler(BaseHandler):
     def post(self, *args, **kwargs):
         query = self.get_argument("q", "")
         client = tornado.httpclient.AsyncHTTPClient()
-        response = yield tornado.gen.Task(client.fetch, "http://localhost:8000/api/question?q=%s" % query)
+        response = yield tornado.gen.Task(client.fetch, domain + "api/question?q=%s" % query)
         body = eval(response.body)
         time = body.get("time", 0)
         results = body.get("results", "")

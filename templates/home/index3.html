@@ -18,7 +18,7 @@
 
 {% block bottom-js %}
     <script type="text/javascript">
-        var ws = new WebSocket("ws://localhost:8000/userSocket");
+        var ws = new WebSocket("ws://127.0.0.1:8000/userSocket");
         ws.onopen = function() {
            ws.send("Hello, world");
         };

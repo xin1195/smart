@@ -37,7 +37,7 @@ g_redis_time_1w = 7 * 24 * 60 * 60
 logger = get_logger(strFileName="smartSearch.log", debug=20, showStreamLog=True, saveLogPath=None)
 
 # domain 域名配置
-domain = "http://localhost:8000/"
+domain = "http://127.0.0.1:8000/"
 
 
 
