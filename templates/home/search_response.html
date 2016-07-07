@@ -1,0 +1,17 @@
+{% extends "layout/base1.html" %}
+
+{% block title%}搜索结果{% end %}
+
+{% block head-css %}
+<link href="{{ static_url('home/css/index.css') }}" rel="stylesheet">
+{% end %}
+
+{% block content %}
+    <h1>搜索时间：</h1> <h4>{{ time }}</h4>
+    <hr/>
+    <h2>搜索结果</h2><br>
+    <h4> {{ results }} </h4>
+
+{% end %}
+
+

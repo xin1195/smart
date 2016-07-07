@@ -1,0 +1,20 @@
+{% extends "layout/base1.html" %}
+
+{% block title%}首页{% end %}
+
+{% block head-css %}
+<link href="{{ static_url('home/css/index.css') }}" rel="stylesheet">
+{% end %}
+
+{% block content %}
+    <h1>index4</h1>
+    <div>
+        <form action="/index4" method="post">
+            {% raw xsrf_form_html() %}
+            <input type="text" name="q" value="请输入搜索内容" />
+            <input type="submit" value="搜索" />
+        </form>
+    </div>
+{% end %}
+
+

@@ -21,7 +21,8 @@ settings = dict(
 client = motor.motor_tornado.MotorClient('mongodb://112.74.204.250:27017')
 
 # 设置redis的连接
-g_redis_db = tornadoredis.Client(host='10.2.0.54', port=6379, password="jm*7yrt@13", selected_db=9)
+# g_redis_db = tornadoredis.Client(host='10.2.0.54', port=6379, password="jm*7yrt@13", selected_db=9)
+g_redis_db = tornadoredis.Client(host='127.0.0.1', port=6379, password=None, selected_db=1)
 
 g_redis_time_5m = 5 * 60
 g_redis_time_10m = 10 * 60
@@ -32,4 +33,12 @@ g_redis_time_5h = 5 * 60 * 60
 g_redis_time_1d = 24 * 60 * 60
 g_redis_time_1w = 7 * 24 * 60 * 60
 
+# 日志配置
 logger = get_logger(strFileName="smartSearch.log", debug=20, showStreamLog=True, saveLogPath=None)
+
+# domain 域名配置
+domain = "http://localhost:8000/"
+
+
+
+
