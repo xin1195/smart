@@ -28,10 +28,26 @@
     </script>
 </head>
 <body>
-<!--content-->
 
 {% block content %}
 {% end %}
+
+<!--footer start-->
+<div style="background-color: #eeeeee; min-height: 50px">
+    <footer class="container">
+        <div style="margin:10px auto">
+            <span>
+                &copy; Company 2014 粤ICP备16052093号
+                <script type="text/javascript">
+                    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259862990'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259862990%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+                </script>
+            </span>
+        </div>
+    </footer>
+</div>
+<!--footer end-->
+<!--content end-->
 <!--js-->
 <script src="{{ static_url('common/js/jquery.min.js') }}"></script>
 <script src="{{ static_url('common/js/bootstrap.min.js') }}"></script>
