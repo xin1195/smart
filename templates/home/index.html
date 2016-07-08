@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>程序员网站</title>
-</head>
-<body>
-<h1>这是一个专门服务程序员的网站，目前还在开发中.....敬请关注</h1>
-</body>
-</html>
+{% extends "layout/base1.html" %}
+
+{% block title%}程序员网站{% end %}
+
+{% block head-css %}
+<link href="{{ static_url('home/css/index.css') }}" rel="stylesheet">
+{% end %}
+
+{% block content %}
+    <h1>这是一个专门服务程序员的网站，目前还在开发中.....敬请关注</h1>
+{% end %}
