@@ -13,7 +13,7 @@ settings = dict(
     cookie_secret="bZJc2sWbQLKoscdGkHn/VytuyfgXwQt8S0R0kRvJ5/xJ89E=",
     login_url="/admin/login",
     xsrf_cookies=True,
-    debug=True,
+    debug=False,
 
 )
 
@@ -21,7 +21,6 @@ settings = dict(
 client = motor.motor_tornado.MotorClient('mongodb://112.74.204.250:27017')
 
 # 设置redis的连接
-# g_redis_db = tornadoredis.Client(host='10.2.0.54', port=6379, password="jm*7yrt@13", selected_db=9)
 g_redis_db = tornadoredis.Client(host='112.74.204.250', port=6379, password=None, selected_db=1)
 
 g_redis_time_5m = 5 * 60
@@ -38,6 +37,7 @@ logger = get_logger(strFileName="smartSearch.log", debug=20, showStreamLog=True,
 
 # domain 域名配置
 domain = "http://www.liuhub.com/"
+# domain = "http://127.0.0.1:8000/"
 
 
 

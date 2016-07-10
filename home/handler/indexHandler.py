@@ -31,9 +31,8 @@ class HomeIndex4Handler(BaseHandler):
     def post(self, *args, **kwargs):
         query = self.get_argument("q", "")
         client = tornado.httpclient.AsyncHTTPClient()
-        response = yield tornado.gen.Task(client.fetch, domain + "api/question?q=%s" % query)
+        response = yield tornado.gen.Task(client.fetch, domain + "api/word?q=%s" % query)
         body = eval(response.body)
-        time = body.get("time", 0)
         results = body.get("results", "")
-        self.render("home/search_response.html", time=time, results=results)
+        self.render("home/search_response.html", time=response.request_time, results=results)
 

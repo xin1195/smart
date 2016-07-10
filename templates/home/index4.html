@@ -1,4 +1,12 @@
-{% extends "layout/base1.html" %}
+{% extends "layout/base.html" %}
+
+{% block meta %}<meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="">
+    <meta name="revised" content="">
+    <meta name="others" content="">
+{% end %}
+
 
 {% block title%}首页{% end %}
 
@@ -7,13 +15,22 @@
 {% end %}
 
 {% block content %}
-    <h1>index4</h1>
-    <div>
-        <form action="/index4" method="post">
-            {% raw xsrf_form_html() %}
-            <input type="text" name="q" value="请输入搜索内容" />
-            <input type="submit" value="搜索" />
-        </form>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-4">
+            <h1>中国文字大全</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form action="/index4" method="post" class="form-inline">
+                {% raw xsrf_form_html() %}
+                <div class="form-group">
+                    <label class="sr-only" for="q">请输入搜索内容</label>
+                    <input type="text" class="form-control" id="q" placeholder="请输入搜索内容" name="q">
+                </div>
+                <button type="submit" class="btn btn-default">搜  索</button>
+            </form>
+        </div>
     </div>
 {% end %}
 
