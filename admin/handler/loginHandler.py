@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # _*_coding:utf-8_*_
-# Created by "LiuXin"
-# Time 2016/5/25
+import hashlib
+
 import tornado.web
 from tornado import gen
 
@@ -10,26 +10,29 @@ from admin.handler.baseHandler import BaseHandler
 
 class AdminLoginHandler(BaseHandler):
     def get(self):
-        self.render("admin/login.html")
+        self.render("admin/sys_login.html")
 
     @gen.coroutine
     def post(self):
         username = self.get_argument("username", default="")
         password = self.get_argument("password", default="")
         if username != "" and password != "":
-            user = yield self.db.user.find_one({"username": username, "password": password})
+            salt = hashlib.md5(username.encode('utf-8')).hexdigest()
+            hash_password = hashlib.sha256((password + salt).encode('utf-8')).hexdigest()
+            query = {"username": username, "password": hash_password}
+            show = {"_id": 0, "username": 1, "password": 1}
+            user = yield self.db.sys_user.find_one(query, show)
             if user:
                 self.set_secure_cookie("user", username)
                 self.redirect("/admin")
             else:
-                self.redirect("/spider/login")
+                self.redirect("/login")
         else:
-            self.redirect("/admin/login")
+            self.redirect("/login")
 
 
 class AdminLogoutHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.set_secure_cookie("user", "")
-        self.render("admin/login.html")
-
+        self.redirect("/login")

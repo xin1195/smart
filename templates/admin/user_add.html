@@ -1,0 +1,62 @@
+{% extends "layout/base_content.html" %}
+
+{% block title%}
+后台管理系统
+{% end %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="/admin/user">人员管理</a></li>
+    <li class="active">新增用户</li>
+</ol>
+<br>
+{% if res_msg  %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> {{ res_msg }}
+        </div>
+{% end %}
+
+<form id="companyForm" action="{{ form_action }}" method="post" class="form-horizontal">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label class="col-lg-2 control-label">用户名 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" placeholder="用户名" maxlength="32" value="{{user.get("username")}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">密码 </label>
+        <div class="col-lg-5">
+            <input type="password" class="form-control" name="password" placeholder="密码" maxlength="64"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">确认密码 </label>
+        <div class="col-lg-5">
+            <input type="password" class="form-control" name="re_password" placeholder="确认密码" maxlength="64"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">邮箱 </label>
+        <div class="col-lg-5">
+            <input type="email" class="form-control" name="email" placeholder="邮箱" value="{{user.get("email")}}" maxlength="32"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">电话号码 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" maxlength="11" name="tell_phone" placeholder="电话号码" value="{{user.get("tell_phone","")}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"></label>
+        <div class="col-lg-5">
+            <button class="btn btn-success  btn-block" type="submit">
+                <b>保存</b>
+            </button>
+        </div>
+    </div>
+</form>
+{% end %}
+

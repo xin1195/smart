@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="liuxin">
+    <title>Sodo | {% block title %} 管理系统 {% end %}</title>
+    <link href="{{ static_url('common/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/plugins/bootstrap-validator/bootstrapValidator.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/plugins/bootstrap-fileinput/css/fileinput.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/css/custom.css') }}" rel="stylesheet">
+    {% block head-css %}
+    {% end %}
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">SoDo</a>
+        </div>
+        <div id="navbar-menu" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li><a href="/admin/">后台管理系统</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"> 欢迎{{ current_user }}</a></li>
+                <li><a href="/logout">安全退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="sidbar-menu" class="col-sm-3 col-md-2 sidebar">
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <span class="glyphicon glyphicon-cog"> app基础数据管理</span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="list-group">
+                        <a href="/dev/manage" class="list-group-item"><span class="glyphicon glyphicon-blackboard"> app美国</span></a>
+                        <a href="/dev/group?device_group_id=" class="list-group-item"><span class="glyphicon glyphicon-th"> app中国</span></a>
+                        <a href="/dev/timeSwitch?device_time_switch_id=" class="list-group-item"><span class="glyphicon glyphicon-time"> app沙特</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span class="glyphicon glyphicon-cog"> 系统管理</span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="list-group">
+                        <a href="/admin/user" class="list-group-item"><span class="glyphicon glyphicon-user"> 用户管理</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% block content %}
+
+            {% end %}
+        </div>
+    </div>
+</div>
+
+<script src="{{ static_url('common/js/jquery-2.1.1.min.js') }}"></script>
+<script src="{{ static_url('common/js/bootstrap.min.js') }}"></script>
+<script src="{{ static_url('common/plugins/bootstrap-validator/bootstrapValidator.js') }}"></script>
+{% block bottom-js %}
+
+{% end %}
+
+</body>
+</html>

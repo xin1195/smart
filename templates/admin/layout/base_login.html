@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="liuxin">
+    <title>Sodo | {% block title %} 管理系统 {% end %}</title>
+    <link href="{{ static_url('common/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/css/nifty.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('common/plugins/bootstrap-validator/bootstrapValidator.min.css') }}" rel="stylesheet">
+    {% block head-css %}
+    {% end %}
+</head>
+<body>
+{% block content %}
+
+{% end %}
+
+<script src="{{ static_url('common/js/jquery-2.1.1.min.js') }}"></script>
+<script src="{{ static_url('common/js/bootstrap.min.js') }}"></script>
+<script src="{{ static_url('common/plugins/bootstrap-validator/bootstrapValidator.js') }}"></script>
+{% block bottom-js %}
+
+{% end %}
+
+</body>
+</html>
+
+
+
+
+
+
