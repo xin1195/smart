@@ -9,11 +9,11 @@ from admin.handler.baseHandler import BaseHandler
 
 
 class AdminLoginHandler(BaseHandler):
-    def get(self):
+    def get(self, *args, **kwargs):
         self.render("admin/sys_login.html")
 
     @gen.coroutine
-    def post(self):
+    def post(self, *args, **kwargs):
         username = self.get_argument("username", default="")
         password = self.get_argument("password", default="")
         if username != "" and password != "":
@@ -33,6 +33,6 @@ class AdminLoginHandler(BaseHandler):
 
 class AdminLogoutHandler(BaseHandler):
     @tornado.web.authenticated
-    def get(self):
+    def get(self, *args, **kwargs):
         self.set_secure_cookie("user", "")
         self.redirect("/login")

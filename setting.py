@@ -13,7 +13,7 @@ settings = dict(
     cookie_secret="bZJc2sWbQLKoscdGkHn/VytuyfgXwQt8S0R0kRvJ5/xJ89E=",
     login_url="/admin/login",
     xsrf_cookies=True,
-    debug=False,
+    debug=True,
 
 )
 
