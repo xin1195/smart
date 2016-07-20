@@ -21,7 +21,7 @@ class AdminPriceHandler(BaseHandler):
         try:
             query = {}
             show = {"_id": 0}
-            cursor = self.db.bijia_price.find(query, show)
+            cursor = self.db.bijia_price.find(query, show).skip((page - 1) * num).limit(num)
             while (yield cursor.fetch_next):
                 price = cursor.next_object()
                 prices.append(price)

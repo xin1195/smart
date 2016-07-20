@@ -21,7 +21,7 @@ class AdminCountryHandler(BaseHandler):
         try:
             query = {}
             show = {"_id": 0}
-            cursor = self.db.bijia_country.find(query, show)
+            cursor = self.db.bijia_country.find(query, show).skip((page - 1) * num).limit(num)
             while (yield cursor.fetch_next):
                 country = cursor.next_object()
                 countrys.append(country)

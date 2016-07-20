@@ -65,7 +65,7 @@
             {% end %}
                 <li><a href="/admin/country?page={{ page }}&num={{ num }}">{{ page }}</a></li>
             {% if (page + 1) <= int((total_count - 1) / num  + 1) %}
-                <li><a href="/admin/user?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
+                <li><a href="/admin/country?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
             {% end %}
             {% if (page + 2) <= int((total_count - 1) / num  + 1)   %}
                 <li><a href="/admin/country?page={{ page + 2 }}&num={{ num }}">{{ page + 2 }}</a></li>

@@ -21,31 +21,31 @@
     {% raw xsrf_form_html() %}
     <div class="form-group">
         <label class="col-lg-2 control-label">国家简写 </label>
-        <div class="col-lg-5">
+        <div class="col-lg-7">
             <input type="text" class="form-control" name="abbreviate" placeholder="国家简写" maxlength="32" value="{{country.get('abbreviate','')}}"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">国家所属洲 </label>
-        <div class="col-lg-5">
+        <div class="col-lg-7">
             <input type="text" class="form-control" name="area" placeholder="国家所属洲" maxlength="32" value="{{country.get('area','')}}"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">中文名称 </label>
-        <div class="col-lg-5">
+        <div class="col-lg-7">
             <input type="text" class="form-control" name="name_zh" placeholder="中文名称" maxlength="64"  value="{{country.get('name_zh','')}}"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">英文名称 </label>
-        <div class="col-lg-5">
+        <div class="col-lg-7">
             <input type="text" class="form-control" name="name_en" placeholder="英文名称" maxlength="64"  value="{{country.get('name_en','')}}"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label"></label>
-        <div class="col-lg-5">
+        <div class="col-lg-7">
             <button class="btn btn-success  btn-block" type="submit">
                 <b>保存</b>
             </button>

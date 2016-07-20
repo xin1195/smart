@@ -26,13 +26,13 @@
         <th>公司代码</th>
         <th>出发地</th>
         <th>目的地</th>
-        <th>挂号费</th>
-        <th>运费</th>
+        <th>挂号费(RMB)</th>
+        <th>运费(RMB)</th>
         <th>预计时间</th>
         <th>是否带电</th>
         <th>是否液体</th>
-        <th>到货率</th>
-        <th>最大重量</th>
+        <th>到货率(%)</th>
+        <th>最大重量(kg)</th>
         <th>操作</th>
     </tr>
     {% if prices %}
@@ -44,13 +44,13 @@
                 <td>{{ price.get("company_code","") }}</td>
                 <td>{{ price.get("starting_place","") }}</td>
                 <td>{{ price.get("destination","") }}</td>
-                <td>$ {{ price.get("register_price","") }}</td>
-                <td>$ {{ price.get("freight","") }}</td>
+                <td>{{ price.get("register_price","") }}</td>
+                <td>{{ price.get("freight","") }}</td>
                 <td>{{ price.get("arrival_time","") }}</td>
                 <td>{{ price.get("is_electric","") }}</td>
                 <td>{{ price.get("is_liquid","") }}</td>
                 <td>{{ price.get("arrival_rate","") }}</td>
-                <td>{{ price.get("max_weight","") }} kg</td>
+                <td>{{ price.get("max_weight","") }}</td>
                 <td><a href="/admin/price/delete?line_code={{ price.get('line_code','') }}">删除</a></td>
             </tr>
         {% end %}
@@ -81,7 +81,7 @@
             {% end %}
                 <li><a href="/admin/price?page={{ page }}&num={{ num }}">{{ page }}</a></li>
             {% if (page + 1) <= int((total_count - 1) / num  + 1) %}
-                <li><a href="/admin/user?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
+                <li><a href="/admin/price?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
             {% end %}
             {% if (page + 2) <= int((total_count - 1) / num  + 1)   %}
                 <li><a href="/admin/price?page={{ page + 2 }}&num={{ num }}">{{ page + 2 }}</a></li>
