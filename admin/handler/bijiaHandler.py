@@ -50,7 +50,7 @@ class AdminBijiaHandler(BaseHandler):
                 price = cursor.next_object()
                 price["total_price"] = float(price["register_price"]) + float(price["freight"]) * weight
                 prices.append(price)
-            total_count = yield self.db.bijia_price.find().count()
+            total_count = yield self.db.bijia_price.find(query, show).count()
         except:
             logger.error(traceback.format_exc())
         self.render("admin/bijia_list.html", prices=prices, res_msg=res_msg, total_count=total_count, page=page,
