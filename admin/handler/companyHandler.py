@@ -96,7 +96,7 @@ class AdminCompanyUpdateHandler(BaseHandler):
                 "website": website,
             }
             query = {"code": code}
-            yield self.db.bijia_company.update(query, company_dict, upsert=True)
+            yield self.db.bijia_company.update(query, {"$set": company_dict}, upsert=True)
         except:
             logger.error(traceback.format_exc())
         self.redirect("/admin/company")

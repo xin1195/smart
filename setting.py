@@ -11,7 +11,7 @@ settings = dict(
     template_path=os.path.join(os.path.dirname(__file__), "templates"),
     static_path=os.path.join(os.path.dirname(__file__), "static"),
     cookie_secret="bZJc2sWbQLKoscdGkHn/VytuyfgXwQt8S0R0kRvJ5/xJ89E=",
-    login_url="/admin/login",
+    login_url="/login",
     xsrf_cookies=True,
     debug=True,
 

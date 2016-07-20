@@ -54,27 +54,27 @@
             <li><a> 共 {{ total_count }}条记录 | 共 {{ int((total_count - 1) / num  + 1) }} 页 | 当前第 {{ page }} 页 </a></li>
             {% if (page - 1) > 0 %}
                 <li>
-                    <a href="/admin/user?page={{ page - 1 }}&num={{ num }}" aria-label="Previous">
+                    <a href="/admin/company?page={{ page - 1 }}&num={{ num }}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
             {% end %}
             {% if (page - 2) > 0 %}
-                <li><a href="/admin/user?page={{ page - 2 }}&num={{ num }}">{{ page - 2 }}</a></li>
+                <li><a href="/admin/company?page={{ page - 2 }}&num={{ num }}">{{ page - 2 }}</a></li>
             {% end %}
             {% if (page - 1) > 0 %}
-                <li><a href="/admin/user?page={{ page - 1 }}&num={{ num }}">{{ page - 1 }}</a></li>
+                <li><a href="/admin/company?page={{ page - 1 }}&num={{ num }}">{{ page - 1 }}</a></li>
             {% end %}
-                <li><a href="/admin/user?page={{ page }}&num={{ num }}">{{ page }}</a></li>
+                <li><a href="/admin/company?page={{ page }}&num={{ num }}">{{ page }}</a></li>
             {% if (page + 1) <= int((total_count - 1) / num  + 1) %}
-                <li><a href="/admin/user?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
+                <li><a href="/admin/company?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
             {% end %}
             {% if (page + 2) <= int((total_count - 1) / num  + 1)   %}
-                <li><a href="/admin/user?page={{ page + 2 }}&num={{ num }}">{{ page + 2 }}</a></li>
+                <li><a href="/admin/company?page={{ page + 2 }}&num={{ num }}">{{ page + 2 }}</a></li>
             {% end %}
             {% if (page + 1) <= int((total_count - 1) / num  + 1) %}
                 <li>
-                    <a href="/admin/user?page={{ page + 1 }}&num={{ num }}" aria-label="Next">
+                    <a href="/admin/company?page={{ page + 1 }}&num={{ num }}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

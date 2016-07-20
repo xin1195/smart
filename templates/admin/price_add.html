@@ -1,0 +1,128 @@
+{% extends "layout/base_content.html" %}
+
+{% block title%}
+后台管理系统
+{% end %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="/admin/price">价格管理</a></li>
+    <li class="active">新增</li>
+</ol>
+<br>
+{% if res_msg  %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> {{ res_msg }}
+        </div>
+{% end %}
+
+<form id="priceForm" action="{{ form_action }}" method="post" class="form-horizontal">
+    {% raw xsrf_form_html() %}
+    <div class="form-group">
+        <label class="col-lg-2 control-label">路线名称 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="line_name" placeholder="路线名称" maxlength="32" value="{{price.get('line_name','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">线路代码 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="line_code" placeholder="线路代码" maxlength="32" value="{{price.get('line_code','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">公司代码 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="company_code" placeholder="公司代码" maxlength="64"  value="{{price.get('company_code','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">出发地 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="starting_place" placeholder="出发地" maxlength="64"  value="{{price.get('starting_place','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">目的地 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="destination" placeholder="目的地" maxlength="64"  value="{{price.get('destination','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">挂号费 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="register_price" placeholder="挂号费" maxlength="64"  value="{{price.get('register_price','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">运费 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="freight" placeholder="运费" maxlength="64"  value="{{price.get('freight','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">预计时间 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="arrival_time" placeholder="预计时间" maxlength="64"  value="{{price.get('arrival_time','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">是否带电 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="is_electric" placeholder="是否带电" maxlength="64"  value="{{price.get('is_electric','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">是否液体 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="is_liquid" placeholder="是否液体" maxlength="64"  value="{{price.get('is_liquid','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">到货率 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="arrival_rate" placeholder="到货率" maxlength="64"  value="{{price.get('arrival_rate','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">最大重量 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="max_weight" placeholder="最大重量" maxlength="64"  value="{{price.get('max_weight','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">条件 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="condition" placeholder="必须条件" maxlength="64"  value="{{price.get('condition','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">特殊要求 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="special_requirement" placeholder="特殊要求" maxlength="64"  value="{{price.get('special_requirement','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">备注 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="remarks" placeholder="备注" maxlength="64"  value="{{price.get('remarks','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">特别声明 </label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="statement" placeholder="特别声明" maxlength="64"  value="{{price.get('statement','')}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"></label>
+        <div class="col-lg-5">
+            <button class="btn btn-success  btn-block" type="submit">
+                <b>保存</b>
+            </button>
+        </div>
+    </div>
+</form>
+{% end %}
+

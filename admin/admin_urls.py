@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # _*_coding:utf-8_*_
 from admin.handler.companyHandler import AdminCompanyHandler, AdminCompanyAddHandler, AdminCompanyUpdateHandler, AdminCompanyDeleteHandler
+from admin.handler.countryHandler import AdminCountryAddHandler, AdminCountryUpdateHandler, AdminCountryDeleteHandler
+from admin.handler.countryHandler import AdminCountryHandler
 from admin.handler.indexHandler import AdminIndexHandler
 from admin.handler.loginHandler import AdminLoginHandler, AdminLogoutHandler
-from admin.handler.priceHandler import AdminPriceHandler
+from admin.handler.priceHandler import AdminPriceHandler, AdminPriceAddHandler, AdminPriceUpdateHandler, AdminPriceDeleteHandler
 from admin.handler.userHandler import AdminUserHandler, AdminUserAddHandler, AdminUserUpdateHandler, AdminUserDeleteHandler
 
 admin_urls = [
@@ -21,5 +23,14 @@ admin_urls = [
     (r"/admin/company/update", AdminCompanyUpdateHandler),
     (r"/admin/company/delete", AdminCompanyDeleteHandler),
 
+    (r"/admin/country", AdminCountryHandler),
+    (r"/admin/country/add", AdminCountryAddHandler),
+    (r"/admin/country/update", AdminCountryUpdateHandler),
+    (r"/admin/country/delete", AdminCountryDeleteHandler),
+
     (r"/admin/price", AdminPriceHandler),
+    (r"/admin/price/add", AdminPriceAddHandler),
+    (r"/admin/price/update", AdminPriceUpdateHandler),
+    (r"/admin/price/delete", AdminPriceDeleteHandler),
+
 ]
