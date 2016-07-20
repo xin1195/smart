@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # _*_coding:utf-8_*_
+from admin.handler.bijiaHandler import AdminBijiaHandler
 from admin.handler.companyHandler import AdminCompanyHandler, AdminCompanyAddHandler, AdminCompanyUpdateHandler, AdminCompanyDeleteHandler
 from admin.handler.countryHandler import AdminCountryAddHandler, AdminCountryUpdateHandler, AdminCountryDeleteHandler
 from admin.handler.countryHandler import AdminCountryHandler
@@ -32,5 +33,7 @@ admin_urls = [
     (r"/admin/price/add", AdminPriceAddHandler),
     (r"/admin/price/update", AdminPriceUpdateHandler),
     (r"/admin/price/delete", AdminPriceDeleteHandler),
+
+    (r"/admin/bijia", AdminBijiaHandler),
 
 ]
