@@ -16,16 +16,20 @@ class AdminUserHandler(BaseHandler):
     def get(self, *args, **kwargs):
         res_msg = ""
         users = []
+        num = int(self.get_argument("num", 15))
+        page = int(self.get_argument("page", 1))
+        total_count = 0
         try:
             query = {}
             show = {"_id": 0}
-            cursor = self.db.sys_user.find(query, show)
+            cursor = self.db.sys_user.find(query, show).skip((page - 1) * num).limit(num)
             while (yield cursor.fetch_next):
                 user = cursor.next_object()
                 users.append(user)
+            total_count = yield self.db.sys_user.find().count()
         except:
             logger.error(traceback.format_exc())
-        self.render("admin/user_list.html", users=users, res_msg=res_msg)
+        self.render("admin/user_list.html", users=users, res_msg=res_msg, total_count=total_count, page=page,  num=num)
 
 
 class AdminUserAddHandler(BaseHandler):

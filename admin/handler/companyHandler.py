@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # _*_coding:utf-8_*_
-import hashlib
 import traceback
 
 import tornado.web
@@ -16,6 +15,9 @@ class AdminCompanyHandler(BaseHandler):
     def get(self, *args, **kwargs):
         res_msg = ""
         companys = []
+        num = int(self.get_argument("num", 15))
+        page = int(self.get_argument("page", 1))
+        total_count = 0
         try:
             query = {}
             show = {"_id": 0}
@@ -23,9 +25,10 @@ class AdminCompanyHandler(BaseHandler):
             while (yield cursor.fetch_next):
                 company = cursor.next_object()
                 companys.append(company)
+            total_count = yield self.db.bijia_company.find().count()
         except:
             logger.error(traceback.format_exc())
-        self.render("admin/company_list.html", companys=companys, res_msg=res_msg)
+        self.render("admin/company_list.html", companys=companys, res_msg=res_msg, total_count=total_count, page=page,  num=num)
 
 
 class AdminCompanyAddHandler(BaseHandler):
