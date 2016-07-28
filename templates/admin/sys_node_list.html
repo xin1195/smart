@@ -1,0 +1,80 @@
+{% extends "layout/base_content.html" %}
+
+{% block title%}
+后台管理系统
+{% end %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ reverse_url('admin_node') }}">权限节点管理</a></li>
+    <li class="active">权限节点列表</li>
+</ol>
+<a class="btn btn-link" href="{{ reverse_url('admin_node_add') }}" role="button">新增</a>
+
+{% if res_msg  %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> {{ res_msg }}
+    </div>
+{% end %}
+<div>
+    <table class="table table-bordered table-hover">
+    <tr class="success">
+        <th> #</th>
+        <th>角色id</th>
+        <th>角色名称</th>
+        <th>删除</th>
+    </tr>
+    {% if nodes %}
+        {% for node in nodes %}
+            <tr>
+                <td>{{ nodes.index(node) + 1 }}</td>
+                <td><a href="{{ reverse_url('admin_node_update') }}?node_id={{ node.get('node_id','') }}">{{ node.get("node_id","") }}</a></td>
+                <td>{{ node.get("node_name","") }}</td>
+                <td><a href="{{ reverse_url('admin_node_delete') }}?node_id={{ node.get('node_id','') }}">删除</a></td>
+            </tr>
+        {% end %}
+
+    {% else %}
+        <tr>
+            <td colspan="5">抱歉，没有用户数据...</td>
+        </tr>
+    {% end %}
+
+</table>
+{# 分页 #}
+    <nav>
+        <ul class="pagination">
+            <li><a> 共 {{ total_count }}条记录 | 共 {{ int((total_count - 1) / num  + 1) }} 页 | 当前第 {{ page }} 页 </a></li>
+            {% if (page - 1) > 0 %}
+                <li>
+                    <a href="{{ reverse_url('admin_node') }}?page={{ page - 1 }}&num={{ num }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% end %}
+            {% if (page - 2) > 0 %}
+                <li><a href="{{ reverse_url('admin_node') }}?page={{ page - 2 }}&num={{ num }}">{{ page - 2 }}</a></li>
+            {% end %}
+            {% if (page - 1) > 0 %}
+                <li><a href="{{ reverse_url('admin_node') }}?page={{ page - 1 }}&num={{ num }}">{{ page - 1 }}</a></li>
+            {% end %}
+                <li><a href="{{ reverse_url('admin_node') }}?page={{ page }}&num={{ num }}">{{ page }}</a></li>
+            {% if (page + 1) <= int((total_count - 1) / num  + 1) %}
+                <li><a href="{{ reverse_url('admin_node') }}?page={{ page + 1 }}&num={{ num }}">{{ page + 1 }}</a></li>
+            {% end %}
+            {% if (page + 2) <= int((total_count - 1) / num  + 1)   %}
+                <li><a href="{{ reverse_url('admin_node') }}?page={{ page + 2 }}&num={{ num }}">{{ page + 2 }}</a></li>
+            {% end %}
+            {% if (page + 1) <= int((total_count - 1) / num  + 1) %}
+                <li>
+                    <a href="{{ reverse_url('admin_node') }}?page={{ page + 1 }}&num={{ num }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% end %}
+        </ul>
+    </nav>
+</div>
+
+{% end %}

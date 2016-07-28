@@ -4,6 +4,7 @@ import os
 
 import motor.motor_tornado
 import tornadoredis
+from pymongo import MongoClient
 
 from common.logManageLib import get_logger
 
@@ -19,6 +20,8 @@ settings = dict(
 
 # 设置mongodb的连接
 client = motor.motor_tornado.MotorClient('mongodb://112.74.204.250:27017')
+# 获取数据库连接
+g_py_client = MongoClient("mongodb://112.74.204.250:27017")
 
 # 设置redis的连接
 g_redis_db = tornadoredis.Client(host='112.74.204.250', port=6379, password=None, selected_db=1)

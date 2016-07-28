@@ -7,11 +7,13 @@ import tornado.web
 from tornado import gen
 
 from admin.handler.baseHandler import BaseHandler
+from common.authLib import auth_permissions
 from setting import logger
 
 
 class AdminUserHandler(BaseHandler):
     @tornado.web.authenticated
+    @auth_permissions
     @gen.coroutine
     def get(self, *args, **kwargs):
         res_msg = ""
@@ -29,17 +31,19 @@ class AdminUserHandler(BaseHandler):
             total_count = yield self.db.sys_user.find().count()
         except:
             logger.error(traceback.format_exc())
-        self.render("admin/user_list.html", users=users, res_msg=res_msg, total_count=total_count, page=page,  num=num)
+        self.render("admin/sys_user_list.html", users=users, res_msg=res_msg, total_count=total_count, page=page, num=num)
 
 
 class AdminUserAddHandler(BaseHandler):
     @tornado.web.authenticated
+    @auth_permissions
     @gen.coroutine
     def get(self, *args, **kwargs):
         res_msg = ""
         user = {}
-        self.render("admin/user_add.html", res_msg=res_msg, form_action="/admin/user/add", user=user)
+        self.render("admin/sys_user_add.html", res_msg=res_msg, form_action="/admin/user/add", user=user)
 
+    @auth_permissions
     @gen.coroutine
     def post(self, *args, **kwargs):
         username = self.get_argument("username", "")
@@ -64,6 +68,7 @@ class AdminUserAddHandler(BaseHandler):
 
 class AdminUserUpdateHandler(BaseHandler):
     @tornado.web.authenticated
+    @auth_permissions
     @gen.coroutine
     def get(self, *args, **kwargs):
         res_msg = ""
@@ -75,8 +80,9 @@ class AdminUserUpdateHandler(BaseHandler):
             user = yield self.db.sys_user.find_one(query, show)
         except:
             logger.error(traceback.format_exc())
-        self.render("admin/user_add.html", user=user, res_msg=res_msg, form_action="/admin/user/update")
+        self.render("admin/sys_user_add.html", user=user, res_msg=res_msg, form_action="/admin/user/update")
 
+    @auth_permissions
     @gen.coroutine
     def post(self, *args, **kwargs):
         username = self.get_argument("username", "")
@@ -102,6 +108,7 @@ class AdminUserUpdateHandler(BaseHandler):
 
 class AdminUserDeleteHandler(BaseHandler):
     @tornado.web.authenticated
+    @auth_permissions
     @gen.coroutine
     def get(self, *args, **kwargs):
         try:
