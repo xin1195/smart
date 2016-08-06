@@ -3,7 +3,7 @@
 import os
 
 import motor.motor_tornado
-import tornadoredis
+import redis
 from pymongo import MongoClient
 
 from common.logManageLib import get_logger
@@ -24,7 +24,7 @@ client = motor.motor_tornado.MotorClient('mongodb://112.74.204.250:27017')
 g_py_client = MongoClient("mongodb://112.74.204.250:27017")
 
 # 设置redis的连接
-g_redis_db = tornadoredis.Client(host='112.74.204.250', port=6379, password=None, selected_db=1)
+g_redis_db = redis.StrictRedis(host='112.74.204.250', port=6379, password=None, db=1)
 
 g_redis_time_5m = 5 * 60
 g_redis_time_10m = 10 * 60
